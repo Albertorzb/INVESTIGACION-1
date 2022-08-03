@@ -48,11 +48,10 @@ funcion mayor_menor(num1,num2,num3)// ejercicio 4 y ejercicio 5
 		sino 
 			escribir "el numero mayor es ",num3
 		FinSi
-		
 	FinSi
 FinFuncion
 // La despensa "El Baraton", a todas las ventas que pasen de $100,
-//se les aplicar� un  descuento del 10%, a  todo los dem�s se les aplicar� s�lo el 5% 
+//se les aplicará un  descuento del 10%, a  todo los demás se les aplicará sólo el 5% 
 // luego del recargo del iva del 12%
 funcion Descuentos = descuento(iva,ventas)//6
 	Si ventas>100 Entonces
@@ -67,7 +66,6 @@ funcion Descuentos = descuento(iva,ventas)//6
 		Escribir "El valor a pagar tendra un descuento del 5% y sera: ",vpagar
 	Fin Si
 FinFuncion                                                            //7
-
 Funcion  Pago_de_sueldo <- pago ( horas,vhora,hextra,hcien,vtotal,desc,nom )
 	sueldo=horas*vhora
 	sobret=(hextra*1.5+hcien*2)
@@ -84,8 +82,6 @@ Funcion  Pago_de_sueldo <- pago ( horas,vhora,hextra,hcien,vtotal,desc,nom )
 	Escribir "Neto a recibir: $ ",nrecibir
 Fin Funcion
 funcion notas_promedio(num1,num2)
-	
-	escribir num2
 	suma= (num1+num2)/2
 	si suma>=70 Entonces
 		escribir "aprobado"
@@ -95,8 +91,7 @@ funcion notas_promedio(num1,num2)
 			
 		FinSi
 	FinSi
-	
-FinFuncion
+	FinFuncion
 Funcion positivo_negativo <- numposneg ( num )//9
 	leer num
 	Si num>0 Entonces
@@ -117,10 +112,18 @@ Funcion Par_impar <- numparimpar ( num )//10
 	FinSi
 Fin Funcion
 Funcion multiplos_entre_dos_numeros <- multiplosn ( num1,num2 )//11
-	si num1 mod num2 = 0 Entonces
-		escribir "el numero " " " num1 " "   " es multiplo del numero" " "  num2
-	sino
-		Escribir "el numero" " " num1 " "   "no es multiplo del numero" " "  num2 
+	si num1>num2 Entonces
+		si num1 mod num2 = 0 Entonces
+			escribir "el numero " " " num1 " "   " es multiplo del numero" " "  num2
+		sino
+			Escribir "el numero" " " num1 " "   "no es multiplo del numero" " "  num2 
+		FinSi
+	SiNo
+			si num2 mod num1 = 0 Entonces
+				escribir "el numero " " " num2 " "   " es multiplo del numero" " "  num1
+			sino
+				Escribir "el numero" " " num2 " "   "no es multiplo del numero" " "  num1
+			FinSi
 	FinSi
 Fin Funcion
 Funcion Mayor_menor_secuencia <- secmaymen ( ct )//12
@@ -236,7 +239,7 @@ Funcion nbinario <- binario ( num )// 2 sin vectores
 Fin Funcion
 Funcion Bin_Oc_Hex <- transformador ( num, base )//3 sin vectores
 	Segun base Hacer
-		Caso "B":
+		Caso "B" o "b":
 			si num=0 Entonces
 				conv=0
 			SiNo
@@ -253,7 +256,7 @@ Funcion Bin_Oc_Hex <- transformador ( num, base )//3 sin vectores
 				FinMientras
 				
 			FinSi
-		Caso "O":
+		Caso "O" o "o":
 			si num=0 Entonces
 				conv=0
 			SiNo
@@ -266,7 +269,7 @@ Funcion Bin_Oc_Hex <- transformador ( num, base )//3 sin vectores
 				b=conv+10^x*num
 				Escribir "Su transformacion al sistema Octal es: ",b
 			FinSi
-		caso "H":	
+		caso "H" o "h":	
 			x=1
 			q=""
 			Mientras x>0 Hacer
@@ -343,7 +346,17 @@ Funcion acu <- divisor(num)	//8 sin vectores
 		FinSi
 	FinPara
 FinFuncion
-
+funcion bandera=primosh(num)
+	definir r,c,bandera Como Entero
+	bandera=1;c=2
+	Mientras bandera=1 y c<num Hacer
+		si num mod c=0 Entonces
+			bandera=0
+		SiNo
+			c=c+1
+		FinSi
+	FinMientras
+FinFuncion
 // Verifica si un numero es primo o no y devueve 1 si es primo y 0 si no es
 Funcion bandera=primo(num)
 	Definir r,c,bandera Como Entero
@@ -507,12 +520,11 @@ funcion Palindromo = npalindromo(lim,palabra)
 	FinMientras
 	Escribir ""
 	Si i>=lim Entonces
-		Escribir " La palabra ", palabra," es pal�ndroma."
+		Escribir " La palabra ", palabra," es palíndroma."
 	Sino
 		Escribir "La palabra ingresada no es palindroma"
 	FinSi
 FinFuncion
-
 // Algoritmo principal
 Algoritmo Menu
 	Definir pos,resp,limite,dato Como Entero
@@ -539,7 +551,7 @@ Algoritmo Menu
 	// presentar el menor de 3 numeros ingresados
 	menuNumeros[5] = "5)Mayor de tres numeros"
 	// La despensa "El Baraton", a todas las ventas que pasen de $100,
-	//se les aplicar� un  descuento del 10%, a  todo los dem�s se les aplicar� s�lo el 5% 
+	//se les aplicará un  descuento del 10%, a  todo los demás se les aplicará sólo el 5% 
 	// luego del recargo del iva del 12%
 	menuNumeros[6] = "6)Comprar productos"
 	// Ingresar el nombre,horas trabajadas, valor hora, horas50 y horas100 de sobretiempo
@@ -664,8 +676,8 @@ Algoritmo Menu
 							escribir"ingrese un numero"
 							leer num2
 							calculadora("+",num1,num2)
-							Limpiar Pantalla
 							Esperar 3 Segundos
+							Limpiar Pantalla
 						"2":
 							escribir "sumar o restar"
 							escribir "ingrese un numero1"
@@ -738,7 +750,6 @@ Algoritmo Menu
 							
 						"8":
 							Escribir "Notas de Alumnos"; Escribir "  "
-						
 							escribir "ingrese la nota del primer parcial"
 							leer primer
 							Escribir "ingrese la nota del segundo parcial"
@@ -749,7 +760,6 @@ Algoritmo Menu
 							Borrar Pantalla
 						"9":
 							Escribir "Positivo/Negativo"; Escribir "  "
-							Definir num Como Entero
 							Escribir "Digita un numero: "
 							positivo_negativo <- numposneg ( num )
 							Escribir "Espere por favor, Regresando Al Menu..."
@@ -765,9 +775,7 @@ Algoritmo Menu
 							Borrar Pantalla
 						"11":
 							Escribir "Multiplo de cualquier Numero"; Escribir "  "
-							Definir  num1,num2 Como Entero
-							Escribir "ingrese su primer numero"
-							Leer num1
+							Escribir "ingrese su primer numero" Sin Saltar ;Leer num1
 							Escribir "ingrese su segundo numero"
 							leer num2
 							multiplos_entre_dos_numeros <- multiplosn ( num1,num2 )
@@ -775,8 +783,7 @@ Algoritmo Menu
 							Esperar 4 Segundos
 							Borrar Pantalla
 						"12":
-							Escribir "El Mayor y Menor de una secuencia de numeros";  Escribir "  "
-							definir i,n,ct,may,men Como Entero
+							Escribir "El Mayor y Menor de una secuencia de numeros";  Escribir " "
 							may=0
 							men=0
 							Escribir "ingrese la cantidad de numeros que quiere en su secuencia"
@@ -862,7 +869,6 @@ Algoritmo Menu
 					Segun opc2 Hacer
 						"1":
 							Escribir "Cantidad de Digitos de un Numero"; Escribir "  "
-							definir n,contador Como Entero
 							Escribir "escriba un numero"
 							Leer n
 							Numeros_En_Digitos <- digitos ( n )
@@ -877,8 +883,6 @@ Algoritmo Menu
 							Borrar Pantalla
 						"3":
 							Escribir "Convertir de Base 2 a Base 16 pasando por Base 10"; Escribir " "
-							Definir num,mo, x, conv Como Real
-							Definir base,q Como Caracter
 							Escribir "ingrese el numero a transformar"
 							Leer num
 							Escribir "escoja la base a la que desea convertir el nunero (B=binario/O=octal/H=hexadecimal)"
@@ -920,8 +924,7 @@ Algoritmo Menu
 							Borrar Pantalla
 							
 						"8":
-							Escribir "Verificar si dos numeros son Amigos" ; Escribir " "
-							Definir num1,num2,s1,s2,c Como Entero
+							Escribir "Verificar si dos numeros son Amigos" ; Escribir "  "
 							Escribir " Ingrese dos numeros"
 							Leer num1,num2
 							si divisor(num1)=num2 Y divisor(num2)=num1 Entonces
@@ -946,6 +949,27 @@ Algoritmo Menu
 							resp=primo(num)
 							Escribir "Espere por favor, Regresando Al Menu..."
 							Esperar 2 Segundos
+							Limpiar Pantalla
+						"10":
+							escribir "de una serie de numeros cuantos son primos"
+							
+							temporal=seriesh
+							cont=0
+							escribir "ingrese el limite de la serie "
+							leer limite 
+							para i=1 hasta limite con paso 1 Hacer
+								escribir "ingrese una serie de numeros"
+								leer seriesh
+								digito= seriesh mod 10
+								temporal=(temporal-digito)/10
+								si primo(digito)=1 entonces
+									cont = cont+1
+								FinSi
+							FinPara
+							
+							escribir "en la serie ingresada hay ",cont," numeros primos "
+							esperar 11 Segundos
+							Limpiar Pantalla
 						"11":
 							Escribir "Regresando Al Menu Principal..."
 							Esperar 1 Segundos
@@ -971,7 +995,8 @@ Algoritmo Menu
 						"2":
 							Escribir "Presentar los Valores de un Arreglo"
 							presentarArreglo(arreglo,1,limite)
-							Esperar 3 Segundos	
+							Esperar 3 Segundos
+							limpiar pantalla
 						"3":
 							Escribir "Buscar un dato en un Arreglo"
 							presentarArreglo(arreglo,1,limite)
@@ -1008,9 +1033,9 @@ Algoritmo Menu
 							Esperar 4 Segundos
 							Borrar Pantalla
 						"6":
+							Dimension arreglo1[15],arreglo2[15],sumarreglo[15]
 							Escribir "Ingrese cantidad de Elementos:" Sin Saltar
 							Leer dim
-							Dimension arreglo1[dim],arreglo2[dim],sumarreglo[dim]
 							Escribir "Ingrese los datos para vector A"
 							ingresarArreglo(arreglo1,dim)
 							Escribir "Ingrese los datos para vector B"
@@ -1031,8 +1056,6 @@ Algoritmo Menu
 							Esperar 4 Segundos
 							Borrar Pantalla
 						"8":
-							Definir arreglo,dim,suma Como Entero
-							Definir promedio Como Real
 							Escribir "Ingrese cantidad de Elementos:" Sin Saltar;Leer lim
 							promedio=0;suma=0;cont=0
 							Escribir "Ingrese las calificaciones"
@@ -1097,7 +1120,6 @@ Algoritmo Menu
 						"16":
 							Escribir "Regresando Al Menu Principal..."
 							Esperar 1 Segundos
-							
 						De Otro Modo:
 							Escribir "Opcion Incorrecta"
 							Esperar 3 Segundos

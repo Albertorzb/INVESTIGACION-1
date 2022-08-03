@@ -82,7 +82,7 @@ Funcion  Pago_de_sueldo <- pago ( horas,vhora,hextra,hcien,vtotal,desc,nom )
 	Escribir "Neto a recibir: $ ",nrecibir
 Fin Funcion
 funcion notas_promedio(num1,num2)
-	suma= (num1+num2)/2
+	suma= (num1+num2)
 	si suma>=70 Entonces
 		escribir "aprobado"
 	SiNo
